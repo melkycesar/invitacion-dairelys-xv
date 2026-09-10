@@ -25,8 +25,11 @@ var CONFIG = {
   lugarDireccion: "Carretera Sosúa–Cabarete, Puerto Plata",
 
   // --- Enlaces ---
-  mapsUrl: "https://maps.app.goo.gl/WeR9bPg2GYFDGeC1A",   // PENDIENTE: URL definitiva
-  wazeUrl: "",                                             // vacío = se genera solo
+  // Ubicación definitiva: pin en 19.7462368, -70.4644852 (19°44'46.5"N 70°27'52.2"W).
+  mapsUrl: "https://maps.app.goo.gl/LVSDoio81z8CJZqV8",
+  // Waze apunta a las mismas coordenadas del pin de Maps. Si se deja vacío,
+  // se genera buscando el texto de lugarNombre + lugarDireccion.
+  wazeUrl: "https://waze.com/ul?ll=19.7462368,-70.4644852&navigate=yes",
   whatsappUrl: "https://chat.whatsapp.com/ENLACE-PENDIENTE", // PENDIENTE: link real del grupo
 
   // --- Secciones ---
