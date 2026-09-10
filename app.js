@@ -53,6 +53,38 @@ var RSVP_ENDPOINT = "";
 
   var clamp = function (v, min, max) { return Math.max(min, Math.min(max, v)); };
 
+  // ------------------------------------------- Ajuste al ancho de pantalla
+  // El diseño mide 430 px fijos. En pantallas más estrechas el contenedor se
+  // encogía, pero su contenido está posicionado en píxeles absolutos y no se
+  // encogía con él: el marco de sobre quedaba cortado por la derecha (perdía
+  // su borde) y los globos se metían sobre las letras más de lo previsto.
+  // Escalando toda la invitación, la composición se conserva intacta.
+  var ANCHO_DISENO = 430;
+  var invitacion = document.querySelector("[data-invitacion]");
+  var soportaZoom = !!(window.CSS && CSS.supports && CSS.supports("zoom", "0.5"));
+
+  var ajustarAncho = function () {
+    if (!invitacion || !soportaZoom) return;   // sin soporte, se queda como estaba
+    var vw = document.documentElement.clientWidth || window.innerWidth;
+    var escala = Math.min(1, vw / ANCHO_DISENO);
+
+    if (escala < 1) {
+      // flex-shrink era lo que recortaba el contenedor; lo desactivamos y
+      // dejamos que el zoom haga la reducción, que sí arrastra al contenido.
+      invitacion.style.flexShrink = "0";
+      invitacion.style.maxWidth = "none";
+      invitacion.style.zoom = escala;
+    } else {
+      invitacion.style.flexShrink = "";
+      invitacion.style.maxWidth = "";
+      invitacion.style.zoom = "";
+    }
+  };
+
+  ajustarAncho();
+  window.addEventListener("resize", ajustarAncho);
+  window.addEventListener("orientationchange", ajustarAncho);
+
   // ---------------------------------------------------------------- Textos
   CONFIG.wazeUrl = CONFIG.wazeUrl ||
     "https://waze.com/ul?q=" + encodeURIComponent(CONFIG.lugarNombre + " " + CONFIG.lugarDireccion);
