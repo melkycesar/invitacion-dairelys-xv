@@ -20,7 +20,7 @@ var CONFIG = {
   fechaISO: "2026-12-12T20:00:00",   // usado para el archivo de calendario
   duracionHoras: 6,
 
-  // --- Lugar (PENDIENTE: nombre y dirección reales de la villa) ---
+  // --- Lugar (confirmado) ---
   lugarNombre: "Villa Las Palmas",
   lugarDireccion: "Carretera Sosúa–Cabarete, Puerto Plata",
 
