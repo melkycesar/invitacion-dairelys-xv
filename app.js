@@ -14,10 +14,15 @@ var CONFIG = {
   nombre: "Dairelys",
   tagline: "Una noche de neón, música y recuerdos nuevos.",
 
-  // --- Evento (PENDIENTE: confirmar fecha y hora reales) ---
+  // --- Evento (confirmado) ---
   fechaLabel: "Sábado 12 de diciembre, 2026",
   horaLabel: "8:00 PM",
-  fechaISO: "2026-12-12T20:00:00",   // usado para el archivo de calendario
+  // Para el archivo de calendario. El "-04:00" fija la hora al huso de
+  // República Dominicana (UTC-4 todo el año, sin horario de verano). Sin él,
+  // la hora se interpretaría según el celular de cada invitado y quien abra
+  // la invitación desde el extranjero guardaría el evento a la hora
+  // equivocada. Si cambia la hora, ajusta también horaLabel.
+  fechaISO: "2026-12-12T20:00:00-04:00",
   duracionHoras: 6,
 
   // --- Lugar (confirmado) ---
