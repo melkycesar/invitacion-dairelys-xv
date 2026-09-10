@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>XV Años de Dairelys — Te invito a mi fiesta</title>
+<meta name="description" content="Te invito a celebrar mis quince años. Una noche de neón, música y recuerdos nuevos. Confirma tu asistencia." />
+<meta name="theme-color" content="#3f1d44" />
+
+<!-- Vista previa al compartir en WhatsApp / redes -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="XV Años de Dairelys" />
+<meta property="og:description" content="Una noche de neón, música y recuerdos nuevos. Confirma tu asistencia." />
+<meta property="og:image" content="assets/foto_chica.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="assets/star.webp" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  html, body { margin:0; padding:0; background:#150a18; }
+  body { -webkit-font-smoothing:antialiased; }
+  a { color:#a9d8ff; text-decoration:none; }
+  a:hover { color:#e7c9f2; }
+
+  @keyframes floaty     { 0%,100%{ transform:translateY(0) }                 50%{ transform:translateY(-14px) } }
+  @keyframes floaty2    { 0%,100%{ transform:translateY(0) rotate(0deg) }    50%{ transform:translateY(-22px) rotate(4deg) } }
+  @keyframes arrowNudge { 0%,100%{ transform:translateY(-5px); opacity:.55 } 50%{ transform:translateY(6px); opacity:1 } }
+  @keyframes pulseGlow  { 0%,100%{ opacity:.45 }                             50%{ opacity:.9 } }
+
+  input::placeholder { color:#a98cb4; }
+  input:focus { outline:none; border-color:#e7c9f2 !important; }
+
+  /* Hover de los botones (equivale al style-hover del prototipo) */
+  .btn-cal:hover  { background:#a9d8ff; color:#3f1d44; }
+  .btn-wa:hover   { background:#7ce8b0; color:#3f1d44; }
+  .btn-maps:hover { background:#a9d8ff; color:#3f1d44; }
+  .btn-waze:hover { background:#7de6f0; color:#3f1d44; }
+  .btn-rsvp:hover { background:#a9d8ff; }
+  .btn-rsvp[disabled] { opacity:.55; cursor:default; }
+
+  /* Reveal on scroll. La clase .js la pone app.js, para que sin JS todo se vea igual. */
+  .js [data-rv] {
+    opacity:0;
+    transform:translateY(44px);
+    transition:opacity .85s ease, transform .9s cubic-bezier(.16,.84,.3,1);
+  }
+  .js [data-rv].is-visible { opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js [data-rv] { transition-duration:.01ms; }
+  }
+</style>
+</head>
+<body>
+
+<div style="width:100%; display:flex; justify-content:center; background:#150a18;">
+<div style="width:430px; max-width:100vw; position:relative; overflow:hidden; background:#3f1d44; color:#f6ecf8; font-family:'Jost',sans-serif; box-shadow:0 0 80px rgba(0,0,0,.6);">
+
+  <!-- 1. HERO -->
+  <section style="position:relative; padding:34px 22px 56px; display:flex; flex-direction:column; align-items:center; overflow:hidden;">
+    <img src="assets/svg/envelope_shape_frame.svg" alt="" style="position:absolute; left:18px; top:64px; width:394px; opacity:.55; pointer-events:none;" />
+    <img src="assets/star.webp" alt="" style="position:absolute; right:14px; top:120px; width:54px; opacity:.8; animation:pulseGlow 4s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/star2.webp" alt="" style="position:absolute; left:10px; top:300px; width:40px; opacity:.7; animation:pulseGlow 5.5s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/globos_iridiscentes.webp" alt="" style="position:absolute; right:-34px; bottom:120px; width:150px; opacity:.85; animation:floaty2 9s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/triangulo.webp" alt="" style="position:absolute; left:-18px; bottom:210px; width:88px; opacity:.55; animation:floaty 7s ease-in-out infinite; pointer-events:none;" />
+
+    <div data-rv style="width:100%; display:flex; justify-content:center; padding-top:0; margin-top:-10px;">
+      <img src="assets/svg/te-invito-a-mi-fiesta.svg" alt="Te invito a mi fiesta de cumpleaños" style="width:206px; display:block;" />
+    </div>
+
+    <a href="#rsvp" data-rv style="display:flex; flex-direction:column; align-items:center; gap:8px; margin-top:30px;">
+      <img src="assets/svg/confirma_tu_asistencia.svg" alt="Confirma tu asistencia" style="width:104px; display:block; opacity:.9;" />
+      <img src="assets/svg/confirma_tu_asistencia_arrow.svg" alt="" style="width:11px; display:block; opacity:.9; animation:arrowNudge 1.6s ease-in-out infinite;" />
+    </a>
+
+    <div data-rv style="position:relative; width:308px; margin-top:26px;">
+      <div style="position:relative; width:308px; height:447px; overflow:hidden; -webkit-mask-image:url('assets/svg/contenedor_paralax.svg'); mask-image:url('assets/svg/contenedor_paralax.svg'); -webkit-mask-size:contain; mask-size:contain; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center;">
+        <img data-parallax src="assets/foto_paralax_dairelis.webp" alt="Dairelys" style="position:absolute; left:50%; top:50%; width:150%; transform:translate(-50%,-50%); will-change:transform;" />
+      </div>
+    </div>
+
+    <div data-rv style="width:100%; display:flex; justify-content:center; margin-top:6px;">
+      <img src="assets/svg/15_anos_xv.svg" alt="XV · 15 Años" style="width:178px; display:block;" />
+    </div>
+
+    <p data-rv data-txt="tagline" style="margin:26px 0 0; font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; font-weight:300; letter-spacing:.02em; color:#e7c9f2; text-align:center; text-wrap:pretty;">Una noche de neón, música y recuerdos nuevos.</p>
+  </section>
+
+  <!-- 2. FOTO PRINCIPAL -->
+  <section data-rv style="position:relative; width:100%; line-height:0;">
+    <img src="assets/foto_chica.webp" alt="Dairelys" style="width:100%; display:block;" />
+    <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(63,29,68,.55) 0%, rgba(63,29,68,0) 22%, rgba(63,29,68,0) 70%, #3f1d44 100%); pointer-events:none;"></div>
+    <img src="assets/neon_sticks.webp" alt="" style="position:absolute; left:12px; bottom:18px; width:84px; opacity:.85; pointer-events:none;" />
+  </section>
+
+  <!-- 3. DETALLES DEL EVENTO -->
+  <section style="position:relative; padding:52px 26px 44px; text-align:center; overflow:hidden;">
+    <img src="assets/ellipse.webp" alt="" style="position:absolute; right:-46px; top:24px; width:170px; opacity:.35; animation:pulseGlow 6s ease-in-out infinite; pointer-events:none;" />
+    <p data-rv style="margin:0; font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:#c9a3d6;">Mis quince años</p>
+    <h1 data-rv data-txt="nombre" style="margin:14px 0 0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:52px; line-height:1; letter-spacing:.04em; color:#f6ecf8;">Dairelys</h1>
+    <div data-rv style="width:64px; height:1px; background:#8f5c9b; margin:24px auto;"></div>
+    <div data-rv style="display:flex; flex-direction:column; gap:6px;">
+      <p data-txt="fechaLabel" style="margin:0; font-family:'Cormorant Garamond',serif; font-size:26px; color:#a9d8ff; letter-spacing:.02em;">Sábado 12 de diciembre, 2026</p>
+      <p data-txt="horaLabel" style="margin:0; font-size:14px; letter-spacing:.28em; text-transform:uppercase; color:#e7c9f2;">8:00 PM</p>
+    </div>
+    <p data-rv style="margin:22px 0 0; font-size:14px; line-height:1.7; color:#d8c2e0;"><span data-txt="lugarNombre">Villa Las Palmas</span><br /><span data-txt="lugarDireccion">Carretera Sosúa–Cabarete, Puerto Plata</span></p>
+
+    <div data-rv style="display:flex; flex-direction:column; gap:12px; margin-top:32px;">
+      <a class="btn-cal" data-ics href="#" download="cumpleanos-dairelys.ics" style="display:block; padding:16px 20px; border:1px solid #a9d8ff; border-radius:999px; color:#a9d8ff; font-size:12px; letter-spacing:.24em; text-transform:uppercase;">Añadir al calendario</a>
+      <a class="btn-wa" data-href="whatsappUrl" href="#" target="_blank" rel="noopener" style="display:block; padding:16px 20px; border:1px solid #7ce8b0; border-radius:999px; color:#7ce8b0; font-size:12px; letter-spacing:.24em; text-transform:uppercase;">Unirme al grupo de WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- 4. GALERÍA DE RECUERDOS -->
+  <section style="position:relative; padding:34px 22px 46px; overflow:hidden;">
+    <img src="assets/corazon_digit.webp" alt="" style="position:absolute; left:-16px; top:10px; width:70px; opacity:.5; pointer-events:none;" />
+    <p data-rv style="margin:0 0 6px; text-align:center; font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:#c9a3d6;">Recuerdos</p>
+    <p data-rv style="margin:0 0 28px; text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:24px; color:#f6ecf8;">El mejor glow up</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+      <img data-rv loading="lazy" src="assets/g0.webp" alt="" style="width:100%; object-fit:cover; display:block; grid-column:span 2; aspect-ratio:4/3;" />
+      <img data-rv loading="lazy" src="assets/g1.webp" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
+      <img data-rv loading="lazy" src="assets/g2.webp" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
+      <img data-rv loading="lazy" src="assets/g3.webp" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
+      <img data-rv loading="lazy" src="assets/g5.webp" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
+      <img data-rv loading="lazy" src="assets/g6.webp" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
+      <img data-rv loading="lazy" src="assets/g7.webp" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
+    </div>
+    <img src="assets/globos_neon.webp" alt="" style="position:absolute; right:-30px; bottom:6px; width:120px; opacity:.7; animation:floaty 8s ease-in-out infinite; pointer-events:none;" />
+  </section>
+
+  <!-- 5. VILLA -->
+  <section data-rv style="position:relative; width:100%; line-height:0;">
+    <img loading="lazy" src="assets/villa.webp" alt="La villa" style="width:100%; display:block;" />
+    <div style="position:absolute; inset:0; background:linear-gradient(to bottom, #3f1d44 0%, rgba(63,29,68,.1) 30%, rgba(63,29,68,.15) 60%, rgba(63,29,68,.85) 100%); pointer-events:none;"></div>
+  </section>
+
+  <!-- 6. UBICACIÓN -->
+  <section style="position:relative; padding:44px 26px 48px; text-align:center; overflow:hidden;">
+    <img src="assets/star_balloon_plateados.webp" alt="" style="position:absolute; left:-40px; top:40px; width:120px; opacity:.5; animation:floaty2 11s ease-in-out infinite; pointer-events:none;" />
+    <p data-rv style="margin:0 0 6px; font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:#c9a3d6;">Ubicación</p>
+    <p data-rv data-txt="lugarNombre" style="margin:0 0 24px; font-family:'Cormorant Garamond',serif; font-size:28px; color:#f6ecf8;">Villa Las Palmas</p>
+    <img data-rv loading="lazy" src="assets/villa_ubicacion.webp" alt="Vista aérea de la villa" style="width:100%; display:block; border:1px solid #6d4076;" />
+    <p data-rv data-txt="lugarDireccion" style="margin:18px 0 0; font-size:14px; line-height:1.7; color:#d8c2e0;">Carretera Sosúa–Cabarete, Puerto Plata</p>
+    <div data-rv style="display:flex; gap:10px; margin-top:24px;">
+      <a class="btn-maps" data-href="mapsUrl" href="#" target="_blank" rel="noopener" style="flex:1; padding:15px 8px; border:1px solid #a9d8ff; border-radius:999px; color:#a9d8ff; font-size:11px; letter-spacing:.18em; text-transform:uppercase;">Google Maps</a>
+      <a class="btn-waze" data-href="wazeUrl" href="#" target="_blank" rel="noopener" style="flex:1; padding:15px 8px; border:1px solid #7de6f0; border-radius:999px; color:#7de6f0; font-size:11px; letter-spacing:.18em; text-transform:uppercase;">Waze</a>
+    </div>
+  </section>
+
+  <!-- 7. CÓDIGO DE VESTIMENTA (se oculta si mostrarVestimenta = false en app.js) -->
+  <section data-seccion="vestimenta" style="position:relative; padding:34px 26px 48px; text-align:center; overflow:hidden;">
+    <p data-rv style="margin:0 0 6px; font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:#c9a3d6;">Código de vestimenta</p>
+    <p data-rv data-txt="vestimenta" style="margin:0 0 22px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:26px; color:#f6ecf8;">Todo blanco</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+      <div data-rv>
+        <img loading="lazy" src="assets/codigo_vestimenta_mujeres.webp" alt="Código de vestimenta mujeres" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
+        <p style="margin:8px 0 0; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:#c9a3d6;">Ellas</p>
+      </div>
+      <div data-rv>
+        <img loading="lazy" src="assets/codigo_vestimenta_hombres.webp" alt="Código de vestimenta hombres" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
+        <p style="margin:8px 0 0; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:#c9a3d6;">Ellos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. RSVP -->
+  <section id="rsvp" style="position:relative; padding:44px 26px 64px; overflow:hidden; background:#361840;">
+    <img src="assets/globos_plateados.webp" alt="" style="position:absolute; right:-46px; top:-10px; width:150px; opacity:.42; animation:floaty 10s ease-in-out infinite; pointer-events:none;" />
+    <div data-rv style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <img src="assets/svg/confirma_tu_asistencia.svg" alt="Confirma tu asistencia" style="width:150px; display:block;" />
+      <img src="assets/svg/confirma_tu_asistencia_arrow.svg" alt="" style="width:13px; display:block; opacity:.9;" />
+    </div>
+    <p data-rv style="margin:18px 0 26px; text-align:center; font-size:13px; line-height:1.7; color:#d8c2e0;">Déjame tus datos y te espero para celebrar juntos.</p>
+
+    <p data-gracias hidden style="margin:0; text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:24px; color:#a9d8ff;"></p>
+
+    <form data-form style="display:flex; flex-direction:column; gap:14px;">
+      <input type="text" name="nombre" required autocomplete="name" placeholder="Nombre y apellido" style="width:100%; box-sizing:border-box; padding:15px 18px; background:rgba(255,255,255,.05); border:1px solid #6d4076; border-radius:999px; color:#f6ecf8; font-family:'Jost',sans-serif; font-size:14px;" />
+      <input type="tel" name="telefono" required autocomplete="tel" inputmode="tel" placeholder="Número de teléfono" style="width:100%; box-sizing:border-box; padding:15px 18px; background:rgba(255,255,255,.05); border:1px solid #6d4076; border-radius:999px; color:#f6ecf8; font-family:'Jost',sans-serif; font-size:14px;" />
+      <button class="btn-rsvp" type="submit" style="width:100%; padding:16px 20px; background:#e7c9f2; border:none; border-radius:999px; color:#3f1d44; font-family:'Jost',sans-serif; font-size:12px; letter-spacing:.24em; text-transform:uppercase; cursor:pointer;">Confirmar asistencia</button>
+      <p data-error hidden style="margin:0; text-align:center; font-size:12px; line-height:1.6; color:#ffb3c8;"></p>
+    </form>
+
+    <p data-rv style="margin:38px 0 0; text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:#c9a3d6;">Te espero, <span data-txt="nombre">Dairelys</span></p>
+  </section>
+
+</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
