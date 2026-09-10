@@ -35,7 +35,8 @@ var CONFIG = {
   // Waze apunta a las mismas coordenadas del pin de Maps. Si se deja vacío,
   // se genera buscando el texto de lugarNombre + lugarDireccion.
   wazeUrl: "https://waze.com/ul?ll=19.7462368,-70.4644852&navigate=yes",
-  whatsappUrl: "https://chat.whatsapp.com/ENLACE-PENDIENTE", // PENDIENTE: link real del grupo
+  // Grupo "Cumpleaños de Dairelys XV"
+  whatsappUrl: "https://chat.whatsapp.com/KKAgt7M2bMkKF8gvmlgxaz",
 
   // --- Secciones ---
   mostrarVestimenta: true,
