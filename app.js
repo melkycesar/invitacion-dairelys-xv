@@ -100,9 +100,24 @@ var RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbyKNL6a9Z2ErbTGanJN
     if (typeof valor === "string" && valor) el.textContent = valor;
   });
 
+  // Un enlace que todavía es un marcador de posición no debe llevar a ningún
+  // sitio: el botón se queda visible tal cual, pero inerte, para que al
+  // tocarlo no pase nada en vez de mostrar un error. En cuanto se ponga el
+  // enlace real en CONFIG, vuelve a funcionar solo.
+  var esMarcadorDePosicion = function (url) {
+    return !url || url.indexOf("ENLACE-PENDIENTE") !== -1;
+  };
+
   Array.prototype.forEach.call(document.querySelectorAll("[data-href]"), function (el) {
     var url = CONFIG[el.getAttribute("data-href")];
-    if (url) el.setAttribute("href", url);
+    if (esMarcadorDePosicion(url)) {
+      el.removeAttribute("href");
+      el.removeAttribute("target");
+      el.style.cursor = "default";
+      el.setAttribute("aria-disabled", "true");
+    } else {
+      el.setAttribute("href", url);
+    }
   });
 
   if (!CONFIG.mostrarVestimenta) {
