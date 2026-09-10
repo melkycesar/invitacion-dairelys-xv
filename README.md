@@ -29,7 +29,7 @@ Al hacer `git push` a `main`, GitHub Pages republica el sitio en 1–2 minutos.
 - [x] Nombre y dirección de la villa
 - [x] URL definitiva de Google Maps y Waze (pin en 19.7462368, -70.4644852)
 - [ ] Link real del grupo de WhatsApp
-- [ ] Conectar el formulario de confirmación a Google Sheets
+- [x] Conectar el formulario de confirmación a Google Sheets
 
 ### Conectar el formulario a Google Sheets
 

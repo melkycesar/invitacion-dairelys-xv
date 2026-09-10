@@ -38,9 +38,10 @@ var CONFIG = {
 };
 
 /* Endpoint del formulario de confirmación (Google Sheets + Apps Script).
-   Mientras esté vacío, el formulario solo muestra el mensaje de gracias
-   sin guardar nada. Para conectarlo: pega aquí la URL del Web App. */
-var RSVP_ENDPOINT = "";
+   Si se deja vacío, el formulario solo muestra el mensaje de gracias sin
+   guardar nada. La implementación debe estar publicada con acceso
+   "Cualquiera"; si no, los envíos fallan sin que el invitado se entere. */
+var RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbyKNL6a9Z2ErbTGanJNzAxaBIrO49om6-o55jaraCzpAaw0iDsQ_vi4tHYR2t-nxqyS/exec";
 
 
 /* =========================================================================
