@@ -17,13 +17,6 @@ var CONFIG = {
   // --- Evento (confirmado) ---
   fechaLabel: "Miércoles 21 de octubre, 2026",
   horaLabel: "6:00 PM",
-  // Para el archivo de calendario. El "-04:00" fija la hora al huso de
-  // República Dominicana (UTC-4 todo el año, sin horario de verano). Sin él,
-  // la hora se interpretaría según el celular de cada invitado y quien abra
-  // la invitación desde el extranjero guardaría el evento a la hora
-  // equivocada. Si cambia la hora, ajusta también horaLabel.
-  fechaISO: "2026-10-21T18:00:00-04:00",
-  duracionHoras: 6,
 
   // --- Lugar (confirmado) ---
   lugarNombre: "Caribbean Hills",
@@ -124,46 +117,6 @@ var RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbyKNL6a9Z2ErbTGanJN
   if (!CONFIG.mostrarVestimenta) {
     var vest = document.querySelector('[data-seccion="vestimenta"]');
     if (vest) vest.parentNode.removeChild(vest);
-  }
-
-  // ------------------------------------------------- Añadir al calendario
-  function construirIcs() {
-    var inicio = new Date(CONFIG.fechaISO);
-    if (isNaN(inicio.getTime())) return null;
-    var fin = new Date(inicio.getTime() + CONFIG.duracionHoras * 3600 * 1000);
-    var fmt = function (d) { return d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z"; };
-    var esc = function (s) { return String(s).replace(/([,;\\])/g, "\\$1"); };
-
-    return [
-      "BEGIN:VCALENDAR",
-      "VERSION:2.0",
-      "PRODID:-//XV//ES",
-      "BEGIN:VEVENT",
-      "UID:" + Date.now() + "@xv",
-      "DTSTAMP:" + fmt(new Date()),
-      "DTSTART:" + fmt(inicio),
-      "DTEND:" + fmt(fin),
-      "SUMMARY:XV Años de " + esc(CONFIG.nombre),
-      "LOCATION:" + esc(CONFIG.lugarNombre + ", " + CONFIG.lugarDireccion),
-      "DESCRIPTION:Celebración de los 15 años de " + esc(CONFIG.nombre),
-      "END:VEVENT",
-      "END:VCALENDAR"
-    ].join("\r\n");
-  }
-
-  var btnIcs = document.querySelector("[data-ics]");
-  if (btnIcs) {
-    var ics = construirIcs();
-    if (!ics) {
-      btnIcs.setAttribute("href", "#");
-    } else if (window.Blob && window.URL && window.URL.createObjectURL) {
-      // Blob: mejor compatibilidad que un data-URI, sobre todo en iOS.
-      btnIcs.setAttribute("href", URL.createObjectURL(
-        new Blob([ics], { type: "text/calendar;charset=utf-8" })
-      ));
-    } else {
-      btnIcs.setAttribute("href", "data:text/calendar;charset=utf-8," + encodeURIComponent(ics));
-    }
   }
 
   // ------------------------------------------------- Reveal on scroll
