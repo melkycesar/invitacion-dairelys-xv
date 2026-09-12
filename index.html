@@ -25,10 +25,29 @@
   a { color:#a9d8ff; text-decoration:none; }
   a:hover { color:#e7c9f2; }
 
-  @keyframes floaty     { 0%,100%{ transform:translateY(0) }                 50%{ transform:translateY(-14px) } }
-  @keyframes floaty2    { 0%,100%{ transform:translateY(0) rotate(0deg) }    50%{ transform:translateY(-22px) rotate(4deg) } }
+  /* Flotación. Amplitudes amplias a propósito: con 14–22 px el movimiento
+     pasaba desapercibido. Cada una lleva algo de deriva lateral y giro para
+     que se lea como "flotar" y no como un simple sube-baja. */
+  @keyframes floaty {
+    0%,100% { transform:translate(0,0) rotate(0deg); }
+    50%     { transform:translate(10px,-40px) rotate(-5deg); }
+  }
+  @keyframes floaty2 {
+    0%,100% { transform:translate(0,0) rotate(0deg); }
+    25%     { transform:translate(-14px,-32px) rotate(6deg); }
+    50%     { transform:translate(6px,-60px) rotate(-3deg); }
+    75%     { transform:translate(16px,-28px) rotate(7deg); }
+  }
+  /* Deriva lateral, para variar frente a las dos anteriores. */
+  @keyframes drift {
+    0%,100% { transform:translate(0,0) rotate(0deg) scale(1); }
+    50%     { transform:translate(-30px,22px) rotate(12deg) scale(1.08); }
+  }
   @keyframes arrowNudge { 0%,100%{ transform:translateY(-5px); opacity:.55 } 50%{ transform:translateY(6px); opacity:1 } }
-  @keyframes pulseGlow  { 0%,100%{ opacity:.45 }                             50%{ opacity:.9 } }
+  @keyframes pulseGlow {
+    0%,100% { opacity:.4; transform:scale(.9); }
+    50%     { opacity:1;  transform:scale(1.2); }
+  }
 
   input::placeholder { color:#a98cb4; }
   input:focus { outline:none; border-color:#e7c9f2 !important; }
@@ -61,10 +80,10 @@
   <!-- 1. HERO -->
   <section style="position:relative; padding:34px 22px 56px; display:flex; flex-direction:column; align-items:center; overflow:hidden;">
     <img src="assets/svg/envelope_shape_frame.svg" alt="" style="position:absolute; left:18px; top:64px; width:394px; opacity:.55; pointer-events:none;" />
-    <img src="assets/star.webp" alt="" style="position:absolute; right:14px; top:120px; width:54px; opacity:.8; animation:pulseGlow 4s ease-in-out infinite; pointer-events:none;" />
-    <img src="assets/star2.webp" alt="" style="position:absolute; left:10px; top:300px; width:40px; opacity:.7; animation:pulseGlow 5.5s ease-in-out infinite; pointer-events:none;" />
-    <img src="assets/globos_iridiscentes.webp" alt="" style="position:absolute; right:-34px; bottom:120px; width:150px; opacity:.85; animation:floaty2 9s ease-in-out infinite; pointer-events:none;" />
-    <img src="assets/triangulo.webp" alt="" style="position:absolute; left:-18px; bottom:210px; width:88px; opacity:.55; animation:floaty 7s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/star.webp" alt="" style="position:absolute; right:14px; top:120px; width:54px; opacity:.8; animation:pulseGlow 3s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/star2.webp" alt="" style="position:absolute; left:10px; top:300px; width:40px; opacity:.7; animation:pulseGlow 4s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/globos_iridiscentes.webp" alt="" style="position:absolute; right:-34px; bottom:120px; width:150px; opacity:.85; animation:floaty2 7s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/triangulo.webp" alt="" style="position:absolute; left:-18px; bottom:210px; width:88px; opacity:.55; animation:floaty 5.5s ease-in-out infinite; pointer-events:none;" />
 
     <div data-rv style="width:100%; display:flex; justify-content:center; padding-top:0; margin-top:-10px;">
       <img src="assets/svg/te-invito-a-mi-fiesta.svg" alt="Te invito a mi fiesta de cumpleaños" style="width:206px; display:block;" />
@@ -89,15 +108,22 @@
   </section>
 
   <!-- 2. FOTO PRINCIPAL -->
-  <section data-rv style="position:relative; width:100%; line-height:0;">
+  <section data-rv style="position:relative; width:100%; line-height:0; overflow:hidden;">
     <img src="assets/foto_chica.webp" alt="Dairelys" style="width:100%; display:block;" />
     <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(63,29,68,.55) 0%, rgba(63,29,68,0) 22%, rgba(63,29,68,0) 70%, #3f1d44 100%); pointer-events:none;"></div>
-    <img src="assets/neon_sticks.webp" alt="" style="position:absolute; left:12px; bottom:18px; width:84px; opacity:.85; pointer-events:none;" />
+    <!-- Decoración flotante. Colocada en techo, pared y suelo para no tapar a la quinceañera
+         (su cara queda aprox. en x 170–230 / y 270–350 a 430 px de ancho). -->
+    <img src="assets/triangulo.webp" alt="" style="position:absolute; left:-16px; top:96px; width:120px; opacity:.75; animation:floaty 6.5s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/star.webp" alt="" style="position:absolute; left:150px; top:64px; width:44px; opacity:.85; animation:pulseGlow 3.5s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/ellipse.webp" alt="" style="position:absolute; right:-70px; top:36px; width:180px; opacity:.6; animation:drift 9s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/globos_neon.webp" alt="" style="position:absolute; right:-26px; top:290px; width:190px; opacity:.9; animation:floaty2 7.5s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/corazon_digit.webp" alt="" style="position:absolute; right:14px; bottom:56px; width:74px; opacity:.85; animation:floaty 5s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/neon_sticks.webp" alt="" style="position:absolute; left:12px; bottom:18px; width:84px; opacity:.85; animation:floaty 6s ease-in-out infinite; pointer-events:none;" />
   </section>
 
   <!-- 3. DETALLES DEL EVENTO -->
   <section style="position:relative; padding:52px 26px 44px; text-align:center; overflow:hidden;">
-    <img src="assets/ellipse.webp" alt="" style="position:absolute; right:-46px; top:24px; width:170px; opacity:.35; animation:pulseGlow 6s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/ellipse.webp" alt="" style="position:absolute; right:-46px; top:24px; width:170px; opacity:.35; animation:pulseGlow 4.5s ease-in-out infinite; pointer-events:none;" />
     <p data-rv style="margin:0; font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:#c9a3d6;">Mis quince años</p>
     <h1 data-rv data-txt="nombre" style="margin:14px 0 0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:52px; line-height:1; letter-spacing:.04em; color:#f6ecf8;">Dairelys</h1>
     <div data-rv style="width:64px; height:1px; background:#8f5c9b; margin:24px auto;"></div>
@@ -126,7 +152,7 @@
       <img data-rv loading="lazy" src="assets/g6.webp" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
       <img data-rv loading="lazy" src="assets/g7.webp" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
     </div>
-    <img src="assets/globos_neon.webp" alt="" style="position:absolute; right:-30px; bottom:6px; width:120px; opacity:.7; animation:floaty 8s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/globos_neon.webp" alt="" style="position:absolute; right:-30px; bottom:6px; width:120px; opacity:.7; animation:floaty 6s ease-in-out infinite; pointer-events:none;" />
   </section>
 
   <!-- 5. VILLA -->
@@ -137,7 +163,7 @@
 
   <!-- 6. UBICACIÓN -->
   <section style="position:relative; padding:44px 26px 48px; text-align:center; overflow:hidden;">
-    <img src="assets/star_balloon_plateados.webp" alt="" style="position:absolute; left:-40px; top:40px; width:120px; opacity:.5; animation:floaty2 11s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/star_balloon_plateados.webp" alt="" style="position:absolute; left:-40px; top:40px; width:120px; opacity:.5; animation:floaty2 8s ease-in-out infinite; pointer-events:none;" />
     <p data-rv style="margin:0 0 6px; font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:#c9a3d6;">Ubicación</p>
     <p data-rv data-txt="lugarNombre" style="margin:0 0 24px; font-family:'Cormorant Garamond',serif; font-size:28px; color:#f6ecf8;">Caribbean Hills</p>
     <img data-rv loading="lazy" src="assets/villa_ubicacion.webp" alt="Vista aérea de la villa" style="width:100%; display:block; border:1px solid #6d4076;" />
@@ -166,7 +192,7 @@
 
   <!-- 8. RSVP -->
   <section id="rsvp" style="position:relative; padding:44px 26px 64px; overflow:hidden; background:#361840;">
-    <img src="assets/globos_plateados.webp" alt="" style="position:absolute; right:-46px; top:-10px; width:150px; opacity:.42; animation:floaty 10s ease-in-out infinite; pointer-events:none;" />
+    <img src="assets/globos_plateados.webp" alt="" style="position:absolute; right:-46px; top:-10px; width:150px; opacity:.42; animation:floaty 7s ease-in-out infinite; pointer-events:none;" />
     <div data-rv style="display:flex; flex-direction:column; align-items:center; gap:10px;">
       <img src="assets/svg/confirma_tu_asistencia.svg" alt="Confirma tu asistencia" style="width:150px; display:block;" />
       <img src="assets/svg/confirma_tu_asistencia_arrow.svg" alt="" style="width:13px; display:block; opacity:.9;" />
