@@ -51,8 +51,6 @@ var RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbyKNL6a9Z2ErbTGanJN
 
   document.documentElement.classList.add("js");
 
-  var clamp = function (v, min, max) { return Math.max(min, Math.min(max, v)); };
-
   // ------------------------------------------- Ajuste al ancho de pantalla
   // El diseño mide 430 px fijos. En pantallas más estrechas el contenedor se
   // encogía, pero su contenido está posicionado en píxeles absolutos y no se
@@ -185,22 +183,6 @@ var RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbyKNL6a9Z2ErbTGanJN
       if (el.getBoundingClientRect().top < window.innerHeight) revelar(el);
     });
   }, 1200);
-
-  // ------------------------------------------------- Parallax del nombre
-  var foto = document.querySelector("[data-parallax]");
-  if (foto) {
-    var caja = foto.parentElement;
-    var moverParallax = function () {
-      var r = caja.getBoundingClientRect();
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      var p = clamp((r.top + r.height / 2 - vh / 2) / vh, -1, 1);
-      foto.style.transform = "translate(-50%, calc(-50% + " + (p * 90).toFixed(1) + "px))";
-    };
-    window.addEventListener("scroll", moverParallax, { passive: true });
-    document.addEventListener("scroll", moverParallax, { passive: true, capture: true });
-    window.addEventListener("resize", moverParallax);
-    moverParallax();
-  }
 
   // ------------------------------------------------- Formulario RSVP
   var form = document.querySelector("[data-form]");
