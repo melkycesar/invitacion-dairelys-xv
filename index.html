@@ -132,6 +132,27 @@
       <p data-txt="fechaLabel" style="margin:0; font-family:'Cormorant Garamond',serif; font-size:26px; color:#a9d8ff; letter-spacing:.02em;">Miércoles 21 de octubre, 2026</p>
       <p data-txt="horaLabel" style="margin:0; font-size:14px; letter-spacing:.28em; text-transform:uppercase; color:#e7c9f2;">6:00 PM</p>
     </div>
+
+    <!-- Cuenta regresiva. La rellena app.js a partir de CONFIG.fechaISO; sin JS no aparece. -->
+    <div data-rv data-cuenta style="display:none; justify-content:center; gap:26px; margin-top:22px;">
+      <div style="text-align:center; min-width:30px;">
+        <p data-cr="dias" style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:300; font-size:24px; line-height:1; color:#e7c9f2; font-variant-numeric:tabular-nums;">0</p>
+        <p style="margin:7px 0 0; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#c9a3d6;">Días</p>
+      </div>
+      <div style="text-align:center; min-width:30px;">
+        <p data-cr="horas" style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:300; font-size:24px; line-height:1; color:#e7c9f2; font-variant-numeric:tabular-nums;">00</p>
+        <p style="margin:7px 0 0; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#c9a3d6;">Horas</p>
+      </div>
+      <div style="text-align:center; min-width:30px;">
+        <p data-cr="minutos" style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:300; font-size:24px; line-height:1; color:#e7c9f2; font-variant-numeric:tabular-nums;">00</p>
+        <p style="margin:7px 0 0; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#c9a3d6;">Min</p>
+      </div>
+      <div style="text-align:center; min-width:30px;">
+        <p data-cr="segundos" style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:300; font-size:24px; line-height:1; color:#e7c9f2; font-variant-numeric:tabular-nums;">00</p>
+        <p style="margin:7px 0 0; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#c9a3d6;">Seg</p>
+      </div>
+    </div>
+    <p data-llego style="display:none; margin:22px 0 0; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; color:#e7c9f2;">¡Llegó el día!</p>
     <p data-rv style="margin:22px 0 0; font-size:14px; line-height:1.7; color:#d8c2e0;"><span data-txt="lugarNombre">Caribbean Hills</span><br /><span data-txt="lugarDireccion">Carretera Sosúa–Cabarete, Puerto Plata</span></p>
 
     <div data-rv style="display:flex; flex-direction:column; gap:12px; margin-top:32px;">

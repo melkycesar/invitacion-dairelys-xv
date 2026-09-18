@@ -17,6 +17,10 @@ var CONFIG = {
   // --- Evento (confirmado) ---
   fechaLabel: "Miércoles 21 de octubre, 2026",
   horaLabel: "6:00 PM",
+  // Momento exacto del evento, para la cuenta regresiva. El "-04:00" es el
+  // huso de República Dominicana: así cuenta lo mismo desde cualquier país.
+  // Si cambia la fecha o la hora, cambia también fechaLabel y horaLabel.
+  fechaISO: "2026-10-21T18:00:00-04:00",
 
   // --- Lugar (confirmado) ---
   lugarNombre: "Caribbean Hills",
@@ -115,6 +119,44 @@ var RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbyKNL6a9Z2ErbTGanJN
   if (!CONFIG.mostrarVestimenta) {
     var vest = document.querySelector('[data-seccion="vestimenta"]');
     if (vest) vest.parentNode.removeChild(vest);
+  }
+
+  // ------------------------------------------------- Cuenta regresiva
+  var cuenta = document.querySelector("[data-cuenta]");
+  var llego = document.querySelector("[data-llego]");
+  var momento = new Date(CONFIG.fechaISO).getTime();
+
+  if (cuenta && !isNaN(momento)) {
+    var campo = {};
+    ["dias", "horas", "minutos", "segundos"].forEach(function (k) {
+      campo[k] = cuenta.querySelector('[data-cr="' + k + '"]');
+    });
+    var dosDigitos = function (n) { return (n < 10 ? "0" : "") + n; };
+    var UN_DIA = 24 * 3600 * 1000;
+    var reloj;
+
+    var actualizar = function () {
+      var resta = momento - Date.now();
+
+      if (resta <= 0) {
+        // Llegó la hora: el contador se cambia por el mensaje durante el
+        // día del evento, y al día siguiente desaparece todo.
+        cuenta.style.display = "none";
+        if (llego) llego.style.display = resta > -UN_DIA ? "" : "none";
+        if (reloj) clearInterval(reloj);
+        return;
+      }
+
+      var s = Math.floor(resta / 1000);
+      campo.dias.textContent = Math.floor(s / 86400);
+      campo.horas.textContent = dosDigitos(Math.floor((s % 86400) / 3600));
+      campo.minutos.textContent = dosDigitos(Math.floor((s % 3600) / 60));
+      campo.segundos.textContent = dosDigitos(s % 60);
+    };
+
+    cuenta.style.display = "flex";
+    actualizar();
+    reloj = setInterval(actualizar, 1000);
   }
 
   // ------------------------------------------------- Reveal on scroll
